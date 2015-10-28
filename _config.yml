@@ -116,13 +116,13 @@ disqus:
 #################################### global configure #######################################
 
 username: liyajin
-baseurl: /StrayBirds
+baseurl: /blog
 markdown: redcarpet
 safe: false
 highlighter: pygments
 title: 李雅琎的博客
 description: 工作运动与美食一个都不能少
-theme: midnight
+theme: hack
 disqusname: minixalpha
 
 # theme can be: hack, leap-day, merlot, midnight, minimal, modernist, slate, time-machine, kunka
