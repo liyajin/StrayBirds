@@ -121,9 +121,9 @@ markdown: redcarpet
 safe: false
 highlighter: pygments
 title: 李雅琎的博客
-description: 工作运动与美食一个都不能少
-theme: hack
-disqusname: minixalpha
+description: 欢迎大家一起交流进步
+theme: midnight
+disqusname: Niki
 
 # theme can be: hack, leap-day, merlot, midnight, minimal, modernist, slate, time-machine, kunka
 # those themes are all come from GitHub Pages Themes
