@@ -1,0 +1,19 @@
+---
+layout：default
+title：ArrayList、LinkedList、Vector底层实现与区别
+comment：true
+category：Java
+---
+
+## ArrayList、LinkedList、Vector的底层实现和区别
+ArrayList和Vector：底层是用数组实现的，支持快速随机访问。默认容量都为10。扩容操作ArrayList扩容至原来的1.5倍，Vector扩容至原来的2倍
+**1. Vector：**线程安全的，其实现是在所有的方法上加上了`synchronized`关键字，效率很低。
+**2. ArrayList：** 线程不安全，不是同步的，在Iterator或ListIterator上调用容器的add或remove方法进行修改，会抛出`ConcurrentModificationException`并发修改异常。
+**3. ArrayList线程安全的实现方式：**
+1. **CopyOnWriteArrayList:**在线程对集合进行写操作时会拷贝一个新的数组，完成后再将引用移到新的列表上，旧的列表如果在使用。仍然有效。不会抛出`ConcurrentModificationException`。适合“<font color='blue'>读多写少</font>”环境下使用。存在的问题：内存占用问题；数据一致性问题。
+2. **Collections.synchronizedList:**建立了List的包装类实现线程安全，`synchronizedList`继承自`SynchronizedCollection`，是<font color=blue>在synchronized同步块内使用信号量</font>来实现线程安全的，但是iterator()操作不是线程安全的，扔会抛出`ConcurrentModificationException`。读操作性能不如`CopyOnWriteArrayList`好。
+
+* **LinkedList：**双向循环链表实现，适合于**没有大量随机访问操作，删除和增加频繁**
+<br>**ArrayList&LinkedList：**
+**时间消耗： **在列表末尾添加和删除一个元素所花的开销都是固定的，在中间添加或删除元素，ArrayList列表剩余的元素都需要被移动，而LinkedList花销固定
+**空间消耗： **ArrayList的空间浪费主要体现在在列表结尾预留一定的容量空间，而LinkedList空间浪费主要体现在它的每一个Node节点都需要有一个pre和next指针。
